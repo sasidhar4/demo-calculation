@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="./calculator.js"></script>
+
+<body>
+  <script>
+  </script>
+  <div class="container" ng-controller="myCtrl" ng-app="calculator" style="margin-top:5%">
+    <form novalidate name="myForm">
+      <div class="form-group col-sm-6" ng-class="{'has-error': myForm.number1.$invalid}">
+        Number 1: <input type="number" ng-model="number1" name="number1" class="form-control"
+          ng-change="validateNumber1(number1)" required />
+        <small class="error" ng-show="validsuc" style="color: seagreen">
+          Valid number .
+        </small>
+        <strong style="color: red" ng-show="validerr">
+          Enter valid number
+        </strong>
+      </div>
+      <div class="form-group col-sm-6" ng-class="{'has-error': myForm.email.$invalid}">
+        Number 2: <input type="number" ng-model="number2" name="number2" class="form-control"
+          ng-change="validateNumber2(number2)" required />
+        <small class="error" ng-show="validsuc1" style="color: seagreen">
+          Valid number .
+        </small>
+        <strong style="color: red" ng-show="validerr1">
+          Enter valid number
+        </strong>
+      </div>
+      <div align="center">
+        <span clicker></span>
+      </div>
+      <div ng-show="result">Result: {{result}} </div>
+
+      <button type="button" class="btn btn-primary" ng-click='saveData()' ng-show="result">Save</button>
+      <div ng-show="msg">{{msg}} </div>
+
+      <table ng-show="resultList.length" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Result</th>
+            <th>Show Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="list in resultList ">
+            <td>{{list.result}}</td>
+            <td>
+              <button ng-click='getData(list._id)'>Get Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table ng-show="listData" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Number 1</th>
+            <th>Number 2</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{listData.number1}}</td>
+            <td>{{listData.number2}}</td>
+            <td>{{listData.result}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</body>
+</html>
