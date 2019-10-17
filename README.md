@@ -9,7 +9,7 @@ mongoDB: 3.2.4
 
 npm install 
 npm start 
-
+localhost:9000
 ## Applications overview 
 
 1) App contains 2 input fields with validations
